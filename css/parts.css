@@ -1,0 +1,247 @@
+@charset "utf-8";
+
+/* ================================================================
+   以下、Builder で選択したパーツのCSS（自動連結）
+   ================================================================ */
+
+/* ---- ストライプ型（ta-stripe1） (ta-stripe1) ---- */
+/*テーブル（ta-stripe1-parts）
+---------------------------------------------------------------------------*/
+/*テーブル１行目に入った見出し部分（※caption）*/
+.ta-stripe1-parts caption {
+	font-weight: bold;		/*太字に*/
+	padding: 0.2rem 1rem;	/*ボックス内の余白。上下に0.2文字分、左右に1文字分。*/
+	margin-bottom: 1rem;	/*下に空けるスペース。１文字分。*/
+	background: var(--bg-inverse-color);		/*背景色。theme.cssのbg-inverse-colorを読み込みます。*/
+	color: var(--bg-color);	/*文字色。theme.cssのbg-colorを読み込みます。*/
+}
+
+/*テーブルブロック設定*/
+.ta-stripe1-parts {
+	table-layout: fixed;
+	width: 100%;
+	margin-bottom: 2rem;	/*テーブルの下に空けるスペース。２文字分。*/
+	background: #fff;	/*背景色*/
+	color: #333;		/*文字色*/
+}
+
+/*th、tdの共通設定*/
+.ta-stripe1-parts th, .ta-stripe1-parts td {
+	padding: 0.5rem 1rem;	/*ボックス内の余白。上下に0.5文字分、左右に1文字分。*/
+	word-break: break-all;	/*英語などのテキストを改行で自動的に折り返す設定。これがないと、テーブルを突き抜けて表示される場合があります。*/
+	border-bottom: 1px solid var(--bg-border-color);	/*下の線の幅、線種、var以降は色の指定でtheme.cssのborder-colorを読み込みます。*/
+	text-align: left;	/*テキストを左寄せ*/
+}
+
+/*１行目のth*/
+.ta-stripe1-parts tr:first-child th {
+	background: var(--primary-color);	/*背景色。theme.cssのprimary-colorを読み込みます。*/
+	color: var(--primary-inverse-color);/*文字色。theme.cssのprimary-inverse-colorを読み込みます。*/
+}
+
+/*偶数行の背景色*/
+.ta-stripe1-parts tbody tr:nth-child(even) {
+	background: var(--light-color);		/*theme.light-colorを読み込みます。*/
+	coolor: var(--light-inverse-color);	/*theme.light-inverse-colorを読み込みます。*/
+}
+
+/* ---- ウェーブアニメーション背景（bg-wave1-animation） (bg-wave1-animation) ---- */
+/*波のアニメーション
+---------------------------------------------------------------------------*/
+.text-parts > *:first-child {margin-top: 0;}
+
+/*波を囲む全体のブロック*/
+.bg-wave1-animation-parts {
+	--wave-bg-color: transparent;	/*背景色（波＆テキスト背景）*/
+	--wave-text-color: inherit;		/*文字色*/
+	--wave-height: 80px;			/*波の高さ。お好みで。*/
+	--wave-speed: 80s;				/*波の速度。お好みで。*/
+	position: relative;
+	padding: calc(var(--wave-height) - 1px) 0;
+}
+
+/*色バリエーション（bg）*/
+.bg-wave1-animation-parts.bg-wave1-bg-parts {
+	--wave-bg-color: var(--bg-inverse-color);	/*テキスト背景。theme.cssのbg-inverse-colorを読み込みます。*/
+	--wave-text-color: var(--bg-color);			/*文字色。theme.cssのbg-colorを読み込みます。*/
+}
+/*色バリエーション（primary）*/
+.bg-wave1-animation-parts.bg-wave1-primary-parts {
+	--wave-bg-color: var(--primary-color);	/*テキスト背景。theme.cssのprimary-colorを読み込みます。*/
+	--wave-text-color: var(--primary-inverse-color);	/*文字色。theme.cssのprimary-inverse-colorを読み込みます。*/
+}
+/*色バリエーション（light）*/
+.bg-wave1-animation-parts.bg-wave1-light-parts {
+	--wave-bg-color: var(--light-color);	/*テキスト背景。theme.cssのlight-colorを読み込みます。*/
+	--wave-text-color: var(--light-inverse-color);	/*文字色。theme.cssのlight-inverse-colorを読み込みます。*/
+}
+/*色バリエーション（accent）*/
+.bg-wave1-animation-parts.bg-wave1-accent-parts {
+	--wave-bg-color: var(--accent-color);	/*テキスト背景。theme.cssのaccent-colorを読み込みます。*/
+	--wave-text-color: var(--accent-inverse-color);	/*文字色。theme.cssのaccent-inverse-colorを読み込みます。*/
+}
+
+/*テキストを入れるブロック*/
+.bg-wave1-animation-parts .text-parts {
+	padding: var(--content-space-s) var(--content-space-l);
+	background: var(--wave-bg-color);
+	color: var(--wave-text-color);
+}
+
+/*波の色*/
+.bg-wave1-animation-parts .wave-wrap-parts use {
+	fill: var(--wave-bg-color);
+}
+
+/*上下の波（共通）*/
+.bg-wave1-animation-parts .wave1-parts {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: var(--wave-height);
+}
+.bg-wave1-animation-parts .wave1-parts svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.bg-wave1-animation-parts .wave1-parts .wave-wrap-parts {
+	transform-box: fill-box;
+	transform-origin: 0 0;
+	animation: move-wave var(--wave-speed) linear infinite;
+}
+
+@keyframes move-wave {
+0% { transform: translateX(0); }
+100%   { transform: translateX(-50%); }
+}
+
+/*上の波*/
+.bg-wave1-animation-parts .wave1-top-parts {
+	top: 0;
+}
+/*下の波*/
+.bg-wave1-animation-parts .wave1-bottom-parts {
+	bottom: 0;
+	transform: rotate(180deg);
+}
+
+/* ---- お知らせブロック（news2） (news2) ---- */
+/*news（お知らせ）
+---------------------------------------------------------------------------*/
+dl.news2-parts * {margin: 0;padding: 0;}
+
+/*日付*/
+dl.news2-parts dt {
+	display: flex;
+}
+
+	/*画面幅900px以上の追加指定*/
+	@media (min-width: 900px){
+
+	dl.news2-parts {
+		display: grid;
+		grid-template-columns: max-content minmax(0, 1fr);	/*日付幅は最大の文字数幅に自動調整し、右側テキストは残り一杯使う。*/
+		gap: 0 2rem;	/*2remが、日付とテキストとの間に空けるスペース。お好みで。*/
+		align-items: start;
+	}
+
+	}/*追加指定ここまで*/
+
+/* ---- オーバーレイスライド（effects-overlay2） (effects-overlay2) ---- */
+/*effects-overlay2-parts
+---------------------------------------------------------------------------*/
+/*ボックス１個あたり*/
+.effects-overlay2-parts .list-parts {
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 1px;	/*下に1pxのスペース*/
+}
+
+/*テキストブロック*/
+.effects-overlay2-parts .text-parts {
+	position: relative;z-index: 1;
+	color: #fff;	/*文字色*/
+	text-shadow: 2px 2px 2px rgba(0,0,0,0.5);	/*文字の影。右へ、下へ、ぼかす量、0,0,0は黒のことで0.5は色が50%出た状態。*/
+	padding: 5vw;	/*余白。画面はば100% = 100vwです。*/
+	width: 50%;	/*幅*/
+	text-shadow: 
+	1px 1px 2px rgba(0,0,0,0.6),
+	-1px 1px 2px rgba(0,0,0,0.6),
+	1px -1px 2px rgba(0,0,0,0.6),
+	-1px -1px 2px rgba(0,0,0,0.6);
+}
+
+	/*画面幅600px以下の追加指定*/
+	@media (max-width:600px) {
+
+	/*テキストブロック*/
+	.effects-overlay2-parts .text-parts {
+		width: 100%;	/*幅*/
+	}
+
+	}/*追加指定ここまで*/
+
+
+/*逆向き（テキスト右配置）*/
+.effects-overlay2-parts .list-parts.reverse .text-parts {
+	margin-left: auto;
+}
+
+/*h4見出し*/
+.effects-overlay2-parts .text-parts h4 {
+	font-family: var(--accent-font), var(--base-font);	/*theme.cssのaccent-fontに指定したフォントを読み込む。読み込めなければbase-fontで指定したフォントを読み込む。*/
+	font-size: min(56px, 5vw);	/*基本は5vwで、最大56pxまで*/
+	font-weight: normal;	/*デフォルトの太字を標準に*/
+	margin-top: 0;
+	margin-bottom: 2rem;
+}
+
+/*h4見出し内のspan（小さな文字）*/
+.effects-overlay2-parts .text-parts h4 span {
+	display: block;
+	font-size: 0.8rem;	/*文字サイズ80%*/
+}
+
+/*段落（p）*/
+.effects-overlay2-parts .text-parts p {
+	font-size: 0.85rem;	/*文字サイズ85%*/
+}
+
+/*1つ目（左）の背景画像*/
+.effects-overlay2-parts .image1-parts {
+	background: url("../images/landscape1.jpg") no-repeat center center / cover;
+}
+
+/*2つ目（右）の背景画像*/
+.effects-overlay2-parts .image2-parts {
+	background: url("../images/career_bg.jpg") no-repeat center center / cover;
+}
+
+/*ボタン*/
+.effects-overlay2-parts .btn-parts a {
+	display: block;text-decoration: none;
+	background: rgba(0,0,0,0.5);	/*背景色。0,0,0は黒のことで0.5は色が50%出た状態。*/
+	color: #fff;	/*文字色*/
+	padding: 0.5rem;	/*ボタン内の余白。0.5文字分。*/
+	text-align: center;	/*テキストをセンタリング*/
+	border: 1px solid #fff;	/*枠線の幅、線種、色*/
+}
+/*ボタンのマウスオン時*/
+.effects-overlay2-parts .btn-parts a:hover {
+	background: rgba(0,0,0,0.8);	/*背景色。0,0,0は黒のことで0.8は色が80%出た状態。*/
+	letter-spacing: 0.1em;	/*文字間隔を少しだけ広げる*/
+}
+
+/*マウスオン用のアニメーション*/
+.effects-overlay2-parts .list-parts::before {
+	content: "";position: absolute;inset: 0;
+	background: rgba(0,0,0,0.6);		/*写真に重ねておく半透明の黒い色。0,0,0は黒のことで0.6は色が60%出た状態。*/
+	transition: transform 0.3s 0.1s;	/*アニメーションの速度（0.3秒）と待機時間（0.1秒）。*/
+}
+.effects-overlay2-parts .list-parts:hover::before {
+	transform: translateX(100%);	/*マウスオンで半透明の黒を右側へ出す*/
+}
+.effects-overlay2-parts .list-parts.reverse:hover::before {
+	transform: translateX(-100%);	/*マウスオンで半透明の黒を左側へ出す*/
+}
