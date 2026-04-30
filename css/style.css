@@ -76,7 +76,7 @@ h3:after {
 }
 
 #logo img {
-  max-height: 55px;     /* ← ここでヘッダーに収める */
+  max-height: 80px;     /* ← ここでヘッダーに収める */
   width: auto;
   max-width: none;
 }
@@ -147,18 +147,21 @@ main ul,main ol {
 ---------------------------------------------------------------------------*/
 /*ヘッダーブロック*/
 header {
-	height: 50px;	/*ヘッダーの高さ*/
-	padding-inline: var(--content-space-s);	/*左右にtheme.cssのcontent-space-sを読み込みます*/
-    background: var(--primary-color);		/*背景色。theme.cssのprimary-colorを読み込みます。*/
-	color: var(--primary-inverse-color);	/*文字色。theme.cssのprimary-inverse-colorを読み込みます。*/
-    position: fixed;	/*画面の一定箇所で固定表示*/
-    z-index: 100;
-    width: 100%;
-    transition: transform 0.5s ease, opacity 0.5s ease;	/*スクロールでheaderがフェードする際にかける時間。*/
-    display: flex;	/*中身を横並びに*/
-    align-items: center;
-    gap: var(--content-space-s);	/*中のコンテンツ同士に空けるマージン的な余白。theme.cssのcontent-space-sを読み込みます。*/
-    font-size: 0.9rem;	/*文字サイズ90%*/
+  padding: 10px 20px;   /* ← 高さの代わりに余白で調整 */
+  min-height: 60px;     /* ← 最低高さだけ保証 */
+  
+  background: var(--primary-color);
+  color: var(--primary-inverse-color);
+  
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  
+  display: flex;
+  align-items: center;
+  gap: var(--content-space-s);
+  
+  font-size: 0.9rem;
 }
 
 
