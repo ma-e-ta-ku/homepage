@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Maehata Taku | Homepage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="前畑拓のホームページ">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="home">
+
+<div id="container">
+
+<header class="site-header" id="header">
+
+<h1 id="logo"><a href="index.html"><img src="images/logo_vf.png" alt="Taku Mae"></a></h1>
+
+<div id="menubar2">
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="career.html">Career</a></li>
+<li><a href="research.html">Research</a></li>
+</ul>
+</nav>
+</div>
+
+</header>
+
+<!-- スライド -->
+<div class="mainimg">
+
+<div class="slide img1">
+<div class="text"><div class="text-bg">
+<h2>Profile</h2>
+<p>前畑拓<br>大阪大学原田研究室所属</p>
+</div></div>
+<picture><img src="images/mainimg1.jpg" alt=""></picture>
+</div>
+
+<div class="slide img2">
+<div class="text left-parts"><div class="text-bg">
+<h2>Field of Study</h2>
+<p>ロボティクス</p>
+</div></div>
+<picture><img src="images/research.jpg" alt=""></picture>
+</div>
+
+<div class="slide img3">
+<div class="text right-parts"><div class="text-bg">
+<h2>Vision</h2>
+<p>現在は院試合格に向かって奔走中</p>
+</div></div>
+<picture><img src="images/daruma.jpg" alt=""></picture>
+</div>
+
+<div class="slide-indicators"></div>
+</div>
+
+<div id="contents">
+<main>
+
+<section>
+<h2>News</h2>
+
+<div id="news-container"></div>
+
+</section>
+
+<section>
+<div class="effects-overlay2-parts">
+
+<div class="list-parts image1-parts">
+<div class="text-parts">
+<h4>Research<span>研究内容</span></h4>
+<p>現在取り組んでいる研究テーマや技術について紹介しています。</p>
+<p class="btn-parts"><a href="research.html">View More</a></p>
+</div>
+</div>
+
+<div class="list-parts image2-parts reverse">
+<div class="text-parts">
+<h4>Career<span>経歴</span></h4>
+<p>これまでの学習や研究についてまとめています。</p>
+<p class="btn-parts"><a href="career.html">View More</a></p>
+</div>
+</div>
+
+</div>
+</section>
+
+<span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+
+</main>
+</div>
+
+</div>
+
+<div class="pagetop"><a href="#">↑</a></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/parts.js"></script>
+
+</body>
+
+<script>
+fetch("news.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("news-container").innerHTML = data;
+  });
+</script>
+
+</html>
